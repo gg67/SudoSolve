@@ -17,7 +17,10 @@
 		F701EEDD1614A2AE001DE189 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F701EEDC1614A2AE001DE189 /* Default@2x.png */; };
 		F701EEDF1614A2AE001DE189 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F701EEDE1614A2AE001DE189 /* Default-568h@2x.png */; };
 		F701EEE21614A2AE001DE189 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F701EEE01614A2AE001DE189 /* MainStoryboard.storyboard */; };
-		F701EEE51614A2AE001DE189 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEE41614A2AE001DE189 /* ViewController.m */; };
+		F701EEED1614A32C001DE189 /* Solver.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEEC1614A32C001DE189 /* Solver.m */; };
+		F701EEF71614EDB2001DE189 /* SSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEF61614EDB2001DE189 /* SSCell.m */; };
+		F701EEFA1614EEF9001DE189 /* SolverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEF91614EEF9001DE189 /* SolverViewController.m */; };
+		F701EEFC1614F463001DE189 /* sudoku-test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F701EEFB1614F463001DE189 /* sudoku-test1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,8 +38,13 @@
 		F701EEDC1614A2AE001DE189 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F701EEDE1614A2AE001DE189 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		F701EEE11614A2AE001DE189 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		F701EEE31614A2AE001DE189 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F701EEE41614A2AE001DE189 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F701EEEB1614A32C001DE189 /* Solver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Solver.h; sourceTree = "<group>"; };
+		F701EEEC1614A32C001DE189 /* Solver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Solver.m; sourceTree = "<group>"; };
+		F701EEF51614EDB2001DE189 /* SSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSCell.h; sourceTree = "<group>"; };
+		F701EEF61614EDB2001DE189 /* SSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSCell.m; sourceTree = "<group>"; };
+		F701EEF81614EEF9001DE189 /* SolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolverViewController.h; sourceTree = "<group>"; };
+		F701EEF91614EEF9001DE189 /* SolverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolverViewController.m; sourceTree = "<group>"; };
+		F701EEFB1614F463001DE189 /* sudoku-test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sudoku-test1.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +94,13 @@
 				F701EED71614A2AE001DE189 /* AppDelegate.h */,
 				F701EED81614A2AE001DE189 /* AppDelegate.m */,
 				F701EEE01614A2AE001DE189 /* MainStoryboard.storyboard */,
-				F701EEE31614A2AE001DE189 /* ViewController.h */,
-				F701EEE41614A2AE001DE189 /* ViewController.m */,
+				F701EEF81614EEF9001DE189 /* SolverViewController.h */,
+				F701EEFB1614F463001DE189 /* sudoku-test1.txt */,
+				F701EEF91614EEF9001DE189 /* SolverViewController.m */,
+				F701EEEB1614A32C001DE189 /* Solver.h */,
+				F701EEEC1614A32C001DE189 /* Solver.m */,
+				F701EEF51614EDB2001DE189 /* SSCell.h */,
+				F701EEF61614EDB2001DE189 /* SSCell.m */,
 				F701EECF1614A2AE001DE189 /* Supporting Files */,
 			);
 			path = SudoSolve;
@@ -163,6 +176,7 @@
 				F701EEDD1614A2AE001DE189 /* Default@2x.png in Resources */,
 				F701EEDF1614A2AE001DE189 /* Default-568h@2x.png in Resources */,
 				F701EEE21614A2AE001DE189 /* MainStoryboard.storyboard in Resources */,
+				F701EEFC1614F463001DE189 /* sudoku-test1.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +189,9 @@
 			files = (
 				F701EED51614A2AE001DE189 /* main.m in Sources */,
 				F701EED91614A2AE001DE189 /* AppDelegate.m in Sources */,
-				F701EEE51614A2AE001DE189 /* ViewController.m in Sources */,
+				F701EEED1614A32C001DE189 /* Solver.m in Sources */,
+				F701EEF71614EDB2001DE189 /* SSCell.m in Sources */,
+				F701EEFA1614EEF9001DE189 /* SolverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +272,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SudoSolve/SudoSolve-Prefix.pch";
 				INFOPLIST_FILE = "SudoSolve/SudoSolve-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -267,6 +284,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SudoSolve/SudoSolve-Prefix.pch";
 				INFOPLIST_FILE = "SudoSolve/SudoSolve-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
