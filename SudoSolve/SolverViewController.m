@@ -28,8 +28,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     Solver *solver = [[Solver alloc] init];
-    [solver print];
     [solver loadFromFile:nil];
+    printf("Given Puzzle:\r\r");
+    [solver print];
+    
+    printf("Solved Puzzle:\r\r");
+
+    if ([solver solve]) {
+        [solver print];
+    } else {
+        printf("No solution");
+    }
+
 
     
 }

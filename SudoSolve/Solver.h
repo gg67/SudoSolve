@@ -46,20 +46,24 @@
  */
 - (bool)checkCellForCompletion:(SSCell *)cell;
 
+/**
+ * Setters and Getters for our matirx
+ */
+- (void)setCellForRow:(int)row andColumn:(int)col;
+- (SSCell *)cellForRow:(int)row andColumn:(int)col;
 
 /**
  * Helper methods to check if number insertion is legal
  */
-- (bool)checkRow:(SSCell *)cell;
-- (bool)checkColumn:(SSCell *)cell;
-- (bool)checkSquare:(SSCell *)cell;
-- (bool)placementIsLegal:(SSCell *)cell;
+- (bool)checkRowForCell:(SSCell *)cell withNum:(int)num;
+- (bool)checkColumnForCell:(SSCell *)cell withNum:(int)num;
+- (bool)checkSquareForCell:(SSCell *)cell withNum:(int)num;
+- (bool)placementIsLegalForCell:(SSCell *)cell withNum:(int)num;
 
 /*
- * Helper methods to get next row/column
+ * Helper method to get next cell
  * Take into account there are only 9 rows and columns
  */
-- (int) nextRow:(SSCell *)cell;
-- (int) nextCol:(SSCell *)cell;
+- (SSCell *) nextCell:(SSCell *)cell;
 
 @end

@@ -61,8 +61,6 @@
             _board[i][j] = cell;
         }
     }
-    
-    [self print];
 }
 
 /**
@@ -71,7 +69,8 @@
  * Returns false if no solution was found.
  */
 - (bool)solve {
-    
+    SSCell *firstCell = _board[0][0];
+    return [self solveNextCell:firstCell];
 }
 
 /**
@@ -92,36 +91,35 @@
  * Recursive back tracking function
  */
 - (bool)solveNextCell:(SSCell *)cell {
-    int _nextRow = nextRow(cell.row,cell.col);
-    int _nextCol = nextCol(cell.row,cell.col);
+    SSCell *nextCell = [self nextCell:cell];
     
     // if square is filled, solve next square
-    if (!isEmpty(cell.row,cell.col)) {
-        if (isComplete(cell.row,cell.col)) {
+    if (![self isCellEmpty:cell]) {
+        NSLog(@"Cell is not empty");
+        if ([self checkCellForCompletion:cell]) {
             return true;
         }
-        return solveNextCell_nextRow, _nextCol);
+        return [self solveNextCell:nextCell];
     }
     // if square is empty, loop 1-9 checking each for legality.
     else {
         for (int n=1; n<10; n++) {
             // if its legal, add it, and search next square
-            if (placementIsLegal(n,cell.row,cell.col)) {
-                _board[row][col] = n;
-                
+            if ([self placementIsLegalForCell:cell withNum:n]) {
+                cell.num = n;
                 // if at any point, row=col=8, then we're done.
-                if (isComplete(row,col)) {
-                    // cout << "row = col = 8" << endl;
+                if ([self checkCellForCompletion:cell]) {
+//                    NSLog(@"row = col= 8");
                     return YES;
                 }
-                if(addNum(_nextRow, _nextCol)) {
-                    // cout << "Solving next square" << endl;
+                if([self solveNextCell:nextCell]) {
+//                    NSLog(@"Solving next square");
                     return YES;
                 }
             }
         }
         // if no numbers work, reset the space and backtrack
-        _board[row][col] = 0;
+        cell.num = 0;
         return NO;
         
     }
@@ -131,10 +129,11 @@
  * Checks to see if square is already filled.
  */
 - (bool)isCellEmpty:(SSCell *)cell {
-    if (_board[cell.row][cell.col] == 0) {
+    int num = cell.num;
+    if (num == 0) {
         return YES;
     }
-    return YES;
+    return NO;
 }
 
 /**
@@ -144,37 +143,51 @@
     return cell.row == 8 && cell.col == 8;
 }
 
+/**
+ * Setters and Getters for our matirx
+ */
+- (void)setCellForRow:(int)row andColumn:(int)col {
+    SSCell *cell = _board[row][col];
+    cell.row = row;
+    cell.col = col;
+}
+
+- (SSCell *)cellForRow:(int)row andColumn:(int)col {
+    SSCell *cell = _board[row][col];
+    return cell;
+}
+
 
 /**
  * Helper methods to check if number insertion is legal
  */
-- (bool)checkRow:(SSCell *)cell {
+- (bool)checkRowForCell:(SSCell *)cell withNum:(int)num {
     SSCell *otherCell = nil;
     for (int i=0; i<BOARD_SIZE; i++) {
-        otherCell = _board[cell.row][i];
-        if (cell.num == otherCell.num)
+        otherCell = [self cellForRow:cell.row andColumn:i];
+        if (otherCell.num == num)
             return NO;
     }
     return YES;
 }
-- (bool)checkColumn:(SSCell *)cell {
+- (bool)checkColumnForCell:(SSCell *)cell withNum:(int)num {
     SSCell *otherCell = nil;
     for (int i=0; i<BOARD_SIZE; i++) {
-        otherCell = _board[i][cell.col];
-        if (cell.num == otherCell.num)
+        otherCell = [self cellForRow:i andColumn:cell.col];
+        if (otherCell.num == num)
             return NO;
     }
     return YES;
 }
-- (bool)checkSquare:(SSCell *)cell {
+- (bool)checkSquareForCell:(SSCell *)cell withNum:(int)num {
     SSCell *compareCell = nil;
     if (cell.row < 3) {
         if (cell.col < 3) {
             // Quad 1
             for (int i=0; i<3; i++) {
                 for (int j=0; j<3; j++) {
-                    compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    compareCell = [self cellForRow:i andColumn:j];
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -184,7 +197,7 @@
             for (int i=0; i<3; i++) {
                 for (int j=3; j<6; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -194,7 +207,7 @@
             for (int i=0; i<3; i++) {
                 for (int j=6; j<9; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -205,7 +218,7 @@
             for (int i=3; i<6; i++) {
                 for (int j=0; j<3; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -215,7 +228,7 @@
             for (int i=3; i<6; i++) {
                 for (int j=3; j<6; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -225,7 +238,7 @@
             for (int i=3; i<6; i++) {
                 for (int j=6; j<9; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -236,7 +249,7 @@
             for (int i=6; i<9; i++) {
                 for (int j=0; j<3; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -246,7 +259,7 @@
             for (int i=6; i<9; i++) {
                 for (int j=3; j<6; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -255,7 +268,7 @@
             for (int i=6; i<9; i++) {
                 for (int j=6; j<9; j++) {
                     compareCell = _board[i][j];
-                    if(compareCell.num == cell.num)
+                    if(compareCell.num == num)
                         return NO;
                 }
             }
@@ -263,19 +276,31 @@
     }
     return YES;
 }
-- (bool)placementIsLegal:(SSCell *)cell {
-    return checkRow(cell.num, cell.row) && checkColumn(cell.num, cell.col) && checkSquare(cell.num,cell.row,cell.col);
+- (bool)placementIsLegalForCell:(SSCell *)cell withNum:(int)num {
+    return [self checkRowForCell:cell withNum:num] && [self checkColumnForCell:cell withNum:num] && [self checkSquareForCell:cell withNum:num];
 }
 
 /*
  * Helper methods to get next row/column
  * Take into account there are only 9 rows and columns
  */
-- (int) nextRow:(SSCell *)cell {
+- (SSCell *) nextCell:(SSCell *)cell {
+    if (cell.row == 8 && cell.col == 8) {
+        return nil;
+    }
+    int nextRow, nextCol;
+    if (cell.col == 8) {
+        nextRow = cell.row+1;
+        nextCol = 0;
+    }
+    else {
+        nextRow = cell.row;
+        nextCol = cell.col+1;
+    }
     
-}
-- (int) nextCol:(SSCell *)cell {
-    
+    SSCell *nextCell = _board[nextRow][nextCol];
+    return nextCell;
+        
 }
 
 
