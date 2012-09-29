@@ -94,8 +94,8 @@
 				F701EED71614A2AE001DE189 /* AppDelegate.h */,
 				F701EED81614A2AE001DE189 /* AppDelegate.m */,
 				F701EEE01614A2AE001DE189 /* MainStoryboard.storyboard */,
-				F701EEF81614EEF9001DE189 /* SolverViewController.h */,
 				F701EEFB1614F463001DE189 /* sudoku-test1.txt */,
+				F701EEF81614EEF9001DE189 /* SolverViewController.h */,
 				F701EEF91614EEF9001DE189 /* SolverViewController.m */,
 				F701EEEB1614A32C001DE189 /* Solver.h */,
 				F701EEEC1614A32C001DE189 /* Solver.m */,
@@ -309,6 +309,7 @@
 				F701EEEA1614A2AE001DE189 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

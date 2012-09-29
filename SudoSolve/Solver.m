@@ -95,7 +95,7 @@
     
     // if square is filled, solve next square
     if (![self isCellEmpty:cell]) {
-        NSLog(@"Cell is not empty");
+//        NSLog(@"Cell is not empty");
         if ([self checkCellForCompletion:cell]) {
             return true;
         }
