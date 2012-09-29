@@ -11,8 +11,42 @@
                     <view key="view" contentMode="scaleToFill" id="gK3-eL-Bd1">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gkr-Ii-qhc">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0xY-6n-GDi">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="wzl-9Q-peb">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Hqj-Nv-kxB" id="kBF-qW-7My"/>
+                                    <outlet property="delegate" destination="Hqj-Nv-kxB" id="NU1-Mo-TIv"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Gkr-Ii-qhc" firstAttribute="bottom" secondItem="gK3-eL-Bd1" secondAttribute="bottom" type="default" id="BNz-mH-6zl"/>
+                            <constraint firstItem="Gkr-Ii-qhc" firstAttribute="top" secondItem="gK3-eL-Bd1" secondAttribute="top" type="default" id="JJR-TT-nrv"/>
+                            <constraint firstItem="Gkr-Ii-qhc" firstAttribute="trailing" secondItem="gK3-eL-Bd1" secondAttribute="trailing" type="default" id="e5x-is-VDs"/>
+                            <constraint firstItem="Gkr-Ii-qhc" firstAttribute="leading" secondItem="gK3-eL-Bd1" secondAttribute="leading" type="default" id="pi9-wB-kHZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Gkr-Ii-qhc" id="Ljj-nX-4wE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RiA-YE-Q4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -20,8 +54,26 @@
         </scene>
     </scenes>
     <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
         <class className="SolverViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SolverViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

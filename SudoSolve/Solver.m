@@ -11,7 +11,6 @@
 #define BOARD_SIZE 9
 
 @implementation Solver
-@synthesize board = _board;
 
 /**
  * Default Initializer
@@ -37,10 +36,11 @@
  * Reinitializes the object with a new puzzle from the specified file
  */
 - (void)loadFromFile:(NSString *)filename {
-    NSString* filePath = @"/Users/grahamgaylor/Developer/iOS/SudoSolve/SudoSolve/sudoku-test1.txt";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sudoku-test1" ofType:@"txt"];  
 
     // read everything from text
     NSString* fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    self.givenPuzzleString = fileContents;
     
     // remove \n's
     fileContents = [fileContents stringByReplacingOccurrencesOfString:@"\n" withString:@""];
@@ -87,6 +87,19 @@
     printf("\n");
 }
 
+- (NSString *)stringFromBoard {
+    NSString *boardString = [[NSString alloc] init];
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            SSCell *cell = _board[row][col];
+            NSString *stringNum = [NSString stringWithFormat:@"%d ", cell.num];
+            boardString = [boardString stringByAppendingString:stringNum];
+        }
+        boardString = [boardString stringByAppendingString:@"\n"];
+    }
+    return boardString;
+}
+
 /**
  * Recursive back tracking function
  */
@@ -95,7 +108,7 @@
     
     // if square is filled, solve next square
     if (![self isCellEmpty:cell]) {
-        NSLog(@"Cell is not empty");
+//        NSLog(@"Cell is not empty");
         if ([self checkCellForCompletion:cell]) {
             return true;
         }

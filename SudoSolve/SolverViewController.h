@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Solver.h"
 
-@interface SolverViewController : UIViewController
+@interface SolverViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

@@ -13,6 +13,7 @@
 @interface Solver : NSObject
 
 @property NSArray *board;
+@property NSString *givenPuzzleString;
 
 /**
  * Reinitializes the object with a new puzzle from the specified file
@@ -30,6 +31,11 @@
  * Prints the puzzle contents to the screen in a nicely formatted manner
  */
 - (void)print;
+
+/**
+ *
+ */
+- (NSString *)stringFromBoard;
 
 /**
  * Recursive back tracking function

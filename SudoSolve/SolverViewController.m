@@ -13,9 +13,9 @@
 @end
 
 @implementation SolverViewController
+@synthesize collectionView = _collectionView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -23,31 +23,34 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+#pragma mark - UICollectionViewDataSource Protocol Methods
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 9;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 9;
+}
+
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    return cell;
+}
+
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    Solver *solver = [[Solver alloc] init];
-    [solver loadFromFile:nil];
-    printf("Given Puzzle:\r\r");
-    [solver print];
-    
-    printf("Solved Puzzle:\r\r");
-
-    if ([solver solve]) {
-        [solver print];
-    } else {
-        printf("No solution");
-    }
 
 
-    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+- (void)viewDidUnload {
+    [self setCollectionView:nil];
+    [super viewDidUnload];
+}
 @end
