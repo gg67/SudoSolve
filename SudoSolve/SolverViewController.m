@@ -14,6 +14,7 @@
 
 @implementation SolverViewController
 @synthesize collectionView = _collectionView;
+@synthesize solver = _solver;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,32 +36,62 @@
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    BoardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BoardCell" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Select
-    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    BoardCell *cell = (BoardCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.numberLabel.text = self.currentInputNumber;
+    int row = indexPath.section;
+    int col = indexPath.row;
+    SSCell *ssCell = _solver.board[row][col];
+    ssCell.num = [self.currentInputNumber intValue];    
+    
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
 }
 
+
+#pragma mark - View Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-
-
+    self.currentInputNumber = 0;
+    self.solver = [[Solver alloc] init];
 }
 
 
 - (void)viewDidUnload {
     [self setCollectionView:nil];
     [super viewDidUnload];
+}
+
+#pragma mark - Helper Methods
+-(void)fillInCollectionView {
+    for (int i=0; i<9; i++) {
+        for (int j=0; j<9; j++) {
+            NSUInteger indexArr[] = {i,j};
+            NSIndexPath *path = [NSIndexPath indexPathWithIndexes:indexArr length:2];
+            BoardCell *boardCell = (BoardCell *)[self.collectionView cellForItemAtIndexPath:path];
+            SSCell *ssCell = _solver.board[i][j];
+            boardCell.numberLabel.text = [NSString stringWithFormat:@"%d", ssCell.num];
+        }
+    }
+}
+
+#pragma mark - IBAction Methods
+- (IBAction)numberTapped:(UIButton *)sender {
+    self.currentInputNumber = sender.titleLabel.text;
+}
+
+- (IBAction)solveTapped:(UIButton *)sender {
+    [self.solver solve];
+    [self fillInCollectionView];
+    [self.solver print];
 }
 @end
