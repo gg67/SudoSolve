@@ -18,5 +18,6 @@
 
 - (IBAction)numberTapped:(UIButton *)sender;
 - (IBAction)solveTapped:(UIButton *)sender;
+- (IBAction)clearTapped:(UIButton *)sender;
 
 @end

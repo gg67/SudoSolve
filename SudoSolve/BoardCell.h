@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BoardCell : UICollectionViewCell
+@property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 
 @end

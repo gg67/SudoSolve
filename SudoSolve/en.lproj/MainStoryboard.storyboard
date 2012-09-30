@@ -14,20 +14,20 @@
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Gkr-Ii-qhc">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="283" id="Ku7-zp-Brs"/>
+                                    <constraint firstAttribute="height" constant="337" id="rti-M3-Kye"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="0xY-6n-GDi">
-                                    <size key="itemSize" width="25" height="25"/>
+                                    <size key="itemSize" width="30" height="30"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BoardCell" id="wzl-9Q-peb" customClass="BoardCell">
-                                        <rect key="frame" x="5" y="5" width="25" height="25"/>
+                                        <rect key="frame" x="5" y="5" width="30" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqB-y5-T36">
@@ -39,8 +39,8 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="AqB-y5-T36" firstAttribute="centerY" secondItem="wzl-9Q-peb" secondAttribute="centerY" type="default" id="PUY-Eq-OHr"/>
-                                            <constraint firstItem="AqB-y5-T36" firstAttribute="centerX" secondItem="wzl-9Q-peb" secondAttribute="centerX" type="default" id="ZBG-Tj-0TY"/>
+                                            <constraint firstItem="AqB-y5-T36" firstAttribute="leading" secondItem="wzl-9Q-peb" secondAttribute="leading" constant="12" id="G6M-rv-kz0"/>
+                                            <constraint firstItem="AqB-y5-T36" firstAttribute="centerY" secondItem="wzl-9Q-peb" secondAttribute="centerY" type="default" id="Kye-4n-KIe"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="numberLabel" destination="AqB-y5-T36" id="6nd-we-qRu"/>
@@ -210,26 +210,39 @@
                                     <action selector="solveTapped:" destination="Hqj-Nv-kxB" eventType="touchUpInside" id="Zm7-3s-OOC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRh-XO-w7R">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearTapped:" destination="Hqj-Nv-kxB" eventType="touchUpInside" id="aB4-cc-F7n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Dgh-fq-rHx" firstAttribute="leading" secondItem="G3n-cV-l7r" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0Qy-5P-Id1"/>
-                            <constraint firstItem="YcD-Q3-hRi" firstAttribute="top" secondItem="G3n-cV-l7r" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1WN-Xb-jJN"/>
-                            <constraint firstItem="8zz-9E-mOh" firstAttribute="top" secondItem="Gkr-Ii-qhc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="9VO-Dj-rOS"/>
+                            <constraint firstItem="Z0W-1V-ZyE" firstAttribute="baseline" secondItem="cV8-AZ-164" secondAttribute="baseline" type="default" id="5Nn-pE-4NN"/>
+                            <constraint firstItem="tnJ-Th-8Cr" firstAttribute="baseline" secondItem="XeD-as-pai" secondAttribute="baseline" type="default" id="6CY-Xt-RvD"/>
+                            <constraint firstItem="Izn-Nz-2cc" firstAttribute="baseline" secondItem="tnJ-Th-8Cr" secondAttribute="baseline" type="default" id="794-6d-cdk"/>
                             <constraint firstItem="BfZ-Tz-hY7" firstAttribute="leading" secondItem="8zz-9E-mOh" secondAttribute="leading" type="default" id="9yq-uC-SGi"/>
-                            <constraint firstItem="cV8-AZ-164" firstAttribute="top" secondItem="Gkr-Ii-qhc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ApM-DT-Fi7"/>
                             <constraint firstItem="G3n-cV-l7r" firstAttribute="leading" secondItem="8zz-9E-mOh" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BST-EY-UKB"/>
+                            <constraint firstItem="Dgh-fq-rHx" firstAttribute="baseline" secondItem="G3n-cV-l7r" secondAttribute="baseline" type="default" id="C3n-4S-Fha"/>
                             <constraint firstItem="cV8-AZ-164" firstAttribute="leading" secondItem="Dgh-fq-rHx" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="FfY-MI-YMH"/>
-                            <constraint firstItem="XeD-as-pai" firstAttribute="top" secondItem="Z0W-1V-ZyE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="J0B-yE-Vd7"/>
+                            <constraint firstAttribute="bottom" secondItem="BfZ-Tz-hY7" secondAttribute="bottom" constant="95" id="IYF-Mv-PgY"/>
                             <constraint firstItem="Gkr-Ii-qhc" firstAttribute="top" secondItem="gK3-eL-Bd1" secondAttribute="top" type="default" id="JJR-TT-nrv"/>
                             <constraint firstItem="Izn-Nz-2cc" firstAttribute="leading" secondItem="YcD-Q3-hRi" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="JWm-32-IHz"/>
-                            <constraint firstItem="G3n-cV-l7r" firstAttribute="top" secondItem="Gkr-Ii-qhc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Kyu-4f-ZtV"/>
-                            <constraint firstItem="Izn-Nz-2cc" firstAttribute="top" secondItem="Dgh-fq-rHx" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="M61-M1-ajM"/>
+                            <constraint firstItem="mRh-XO-w7R" firstAttribute="trailing" secondItem="XeD-as-pai" secondAttribute="trailing" type="default" id="PT3-X1-VC1"/>
                             <constraint firstItem="tnJ-Th-8Cr" firstAttribute="leading" secondItem="cV8-AZ-164" secondAttribute="leading" type="default" id="PUM-Cg-8xA"/>
-                            <constraint firstItem="KjP-3h-e6f" firstAttribute="centerX" secondItem="Izn-Nz-2cc" secondAttribute="centerX" type="default" id="S7z-LB-c87"/>
-                            <constraint firstItem="tnJ-Th-8Cr" firstAttribute="top" secondItem="cV8-AZ-164" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Tj5-w5-Ovx"/>
+                            <constraint firstItem="cV8-AZ-164" firstAttribute="baseline" secondItem="Dgh-fq-rHx" secondAttribute="baseline" type="default" id="Tyf-lo-SUy"/>
                             <constraint firstItem="YcD-Q3-hRi" firstAttribute="leading" secondItem="BfZ-Tz-hY7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="WRT-px-v1a"/>
                             <constraint firstItem="XeD-as-pai" firstAttribute="leading" secondItem="Z0W-1V-ZyE" secondAttribute="leading" type="default" id="WrL-VG-Y8e"/>
+                            <constraint firstItem="YcD-Q3-hRi" firstAttribute="top" secondItem="G3n-cV-l7r" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XEF-8e-m59"/>
                             <constraint firstItem="XeD-as-pai" firstAttribute="leading" secondItem="tnJ-Th-8Cr" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Z4v-NL-tI8"/>
                             <constraint firstItem="Z0W-1V-ZyE" firstAttribute="leading" secondItem="cV8-AZ-164" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ZWw-6g-uhb"/>
                             <constraint firstItem="Izn-Nz-2cc" firstAttribute="leading" secondItem="Dgh-fq-rHx" secondAttribute="leading" type="default" id="afx-P3-ft9"/>
@@ -237,12 +250,14 @@
                             <constraint firstItem="Gkr-Ii-qhc" firstAttribute="trailing" secondItem="gK3-eL-Bd1" secondAttribute="trailing" type="default" id="e5x-is-VDs"/>
                             <constraint firstItem="tnJ-Th-8Cr" firstAttribute="leading" secondItem="Izn-Nz-2cc" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eCk-PQ-xAV"/>
                             <constraint firstItem="BfZ-Tz-hY7" firstAttribute="top" secondItem="8zz-9E-mOh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="f16-OM-xbW"/>
-                            <constraint firstItem="Dgh-fq-rHx" firstAttribute="top" secondItem="Gkr-Ii-qhc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gve-mM-0in"/>
+                            <constraint firstAttribute="bottom" secondItem="mRh-XO-w7R" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="feS-cn-qWX"/>
                             <constraint firstAttribute="bottom" secondItem="KjP-3h-e6f" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="hFA-xw-uhc"/>
                             <constraint firstItem="XeD-as-pai" firstAttribute="trailing" secondItem="Z0W-1V-ZyE" secondAttribute="trailing" type="default" id="iMs-cP-lQc"/>
+                            <constraint firstItem="YcD-Q3-hRi" firstAttribute="baseline" secondItem="Izn-Nz-2cc" secondAttribute="baseline" type="default" id="mKG-61-Tn5"/>
                             <constraint firstItem="YcD-Q3-hRi" firstAttribute="leading" secondItem="G3n-cV-l7r" secondAttribute="leading" type="default" id="nVZ-MO-NC9"/>
                             <constraint firstItem="Gkr-Ii-qhc" firstAttribute="leading" secondItem="gK3-eL-Bd1" secondAttribute="leading" type="default" id="pi9-wB-kHZ"/>
-                            <constraint firstItem="Z0W-1V-ZyE" firstAttribute="top" secondItem="Gkr-Ii-qhc" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sPd-1x-ZGe"/>
+                            <constraint firstItem="BfZ-Tz-hY7" firstAttribute="leading" secondItem="KjP-3h-e6f" secondAttribute="leading" type="default" id="uht-HS-nSU"/>
+                            <constraint firstItem="YcD-Q3-hRi" firstAttribute="baseline" secondItem="BfZ-Tz-hY7" secondAttribute="baseline" type="default" id="xp1-0G-uh0"/>
                         </constraints>
                     </view>
                     <connections>
@@ -267,6 +282,7 @@
         <class className="SolverViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SolverViewController.h"/>
             <relationships>
+                <relationship kind="action" name="clearTapped:" candidateClass="UIButton"/>
                 <relationship kind="action" name="numberTapped:" candidateClass="UIButton"/>
                 <relationship kind="action" name="solveTapped:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>

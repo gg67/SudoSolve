@@ -94,4 +94,9 @@
     [self fillInCollectionView];
     [self.solver print];
 }
+
+- (IBAction)clearTapped:(UIButton *)sender {
+    self.solver = [[Solver alloc] init];
+    [self fillInCollectionView];
+}
 @end
