@@ -108,10 +108,10 @@
     
     // if square is filled, solve next square
     if (![self isCellEmpty:cell]) {
-//        NSLog(@"Cell is not empty");
         if ([self checkCellForCompletion:cell]) {
             return true;
-        }
+        } else if (![self placementIsLegalForCell:cell withNum:cell.num])
+            return false;
         return [self solveNextCell:nextCell];
     }
     // if square is empty, loop 1-9 checking each for legality.
@@ -122,11 +122,9 @@
                 cell.num = n;
                 // if at any point, row=col=8, then we're done.
                 if ([self checkCellForCompletion:cell]) {
-//                    NSLog(@"row = col= 8");
                     return YES;
                 }
                 if([self solveNextCell:nextCell]) {
-//                    NSLog(@"Solving next square");
                     return YES;
                 }
             }

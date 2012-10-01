@@ -90,9 +90,12 @@
 }
 
 - (IBAction)solveTapped:(UIButton *)sender {
-    [self.solver solve];
-    [self fillInCollectionView];
-    [self.solver print];
+    if ([self.solver solve]) {
+        [self fillInCollectionView];
+        [self.solver print];
+    } else {
+        NSLog(@"Puzzle not solvable");
+    }
 }
 
 - (IBAction)clearTapped:(UIButton *)sender {
