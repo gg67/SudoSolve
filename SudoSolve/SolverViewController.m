@@ -94,6 +94,7 @@
         [self fillInCollectionView];
         [self.solver print];
     } else {
+        // TODO: Change 0's to "" in our board. Possibly use strings instead of integers
         NSLog(@"Puzzle not solvable");
     }
 }
