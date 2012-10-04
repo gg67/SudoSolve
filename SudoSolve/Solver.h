@@ -9,10 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "SSCell.h"
 
+#define BOARD_SIZE 9
+
+SSCell *_board[BOARD_SIZE][BOARD_SIZE];
 
 @interface Solver : NSObject
 
-@property NSArray *board;
+@property NSString *givenPuzzleString;
+
+
+/**
+ * Returns cell from row and col
+ */
+- (SSCell *)cellForRow:(int)row andColumn:(int)col;
+
+/**
+ * Sets cell number for row and col
+ */
+- (void)setCellNumber:(int)num ForRow:(int)row andColumn:(int)col;
 
 /**
  * Reinitializes the object with a new puzzle from the specified file
@@ -32,6 +46,11 @@
 - (void)print;
 
 /**
+ *
+ */
+- (NSString *)stringFromBoard;
+
+/**
  * Recursive back tracking function
  */
 - (bool)solveNextCell:(SSCell *)cell;
@@ -45,12 +64,6 @@
  * Checks to see if puzzle is complete
  */
 - (bool)checkCellForCompletion:(SSCell *)cell;
-
-/**
- * Setters and Getters for our matirx
- */
-- (void)setCellForRow:(int)row andColumn:(int)col;
-- (SSCell *)cellForRow:(int)row andColumn:(int)col;
 
 /**
  * Helper methods to check if number insertion is legal

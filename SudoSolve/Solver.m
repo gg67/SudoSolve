@@ -8,10 +8,7 @@
 
 #import "Solver.h"
 
-#define BOARD_SIZE 9
-
 @implementation Solver
-@synthesize board = _board;
 
 /**
  * Default Initializer
@@ -19,28 +16,39 @@
 - (id)init {
     self = [super init];
 	if (self != nil) {
-        NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:9];
         for (int i = 0; i < 9; i++) {
-            NSMutableArray *tmpCol = [NSMutableArray arrayWithCapacity:9];
             for (int j=0; j<9; j++) {
                 SSCell *cell = [[SSCell alloc] initWithNum:0 andRow:i andColumn:j];
-                [tmpCol addObject:cell];
+                _board[i][j] = cell;
             }
-            [tmpArray addObject:tmpCol];
         }
-        _board = tmpArray;
 	}
 	return self;
+}
+
+/**
+ * Returns cell from row and col
+ */
+- (SSCell *)cellForRow:(int)row andColumn:(int)col {
+    return _board[row][col];
+}
+
+/**
+ * Sets cell for row and col
+ */
+- (void)setCellNumber:(int)num ForRow:(int)row andColumn:(int)col {
+    _board[row][col].num = num;
 }
 
 /**
  * Reinitializes the object with a new puzzle from the specified file
  */
 - (void)loadFromFile:(NSString *)filename {
-    NSString* filePath = @"/Users/grahamgaylor/Developer/iOS/SudoSolve/SudoSolve/sudoku-test1.txt";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sudoku-test1" ofType:@"txt"];  
 
     // read everything from text
     NSString* fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    self.givenPuzzleString = fileContents;
     
     // remove \n's
     fileContents = [fileContents stringByReplacingOccurrencesOfString:@"\n" withString:@""];
@@ -87,6 +95,19 @@
     printf("\n");
 }
 
+- (NSString *)stringFromBoard {
+    NSString *boardString = [[NSString alloc] init];
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            SSCell *cell = _board[row][col];
+            NSString *stringNum = [NSString stringWithFormat:@"%d ", cell.num];
+            boardString = [boardString stringByAppendingString:stringNum];
+        }
+        boardString = [boardString stringByAppendingString:@"\n"];
+    }
+    return boardString;
+}
+
 /**
  * Recursive back tracking function
  */
@@ -95,10 +116,10 @@
     
     // if square is filled, solve next square
     if (![self isCellEmpty:cell]) {
-//        NSLog(@"Cell is not empty");
         if ([self checkCellForCompletion:cell]) {
             return true;
-        }
+        } else if (![self placementIsLegalForCell:cell withNum:cell.num])
+            return false;
         return [self solveNextCell:nextCell];
     }
     // if square is empty, loop 1-9 checking each for legality.
@@ -109,11 +130,9 @@
                 cell.num = n;
                 // if at any point, row=col=8, then we're done.
                 if ([self checkCellForCompletion:cell]) {
-//                    NSLog(@"row = col= 8");
                     return YES;
                 }
                 if([self solveNextCell:nextCell]) {
-//                    NSLog(@"Solving next square");
                     return YES;
                 }
             }
@@ -142,21 +161,6 @@
 - (bool)checkCellForCompletion:(SSCell *)cell {
     return cell.row == 8 && cell.col == 8;
 }
-
-/**
- * Setters and Getters for our matirx
- */
-- (void)setCellForRow:(int)row andColumn:(int)col {
-    SSCell *cell = _board[row][col];
-    cell.row = row;
-    cell.col = col;
-}
-
-- (SSCell *)cellForRow:(int)row andColumn:(int)col {
-    SSCell *cell = _board[row][col];
-    return cell;
-}
-
 
 /**
  * Helper methods to check if number insertion is legal

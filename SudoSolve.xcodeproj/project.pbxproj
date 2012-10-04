@@ -21,6 +21,8 @@
 		F701EEF71614EDB2001DE189 /* SSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEF61614EDB2001DE189 /* SSCell.m */; };
 		F701EEFA1614EEF9001DE189 /* SolverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F701EEF91614EEF9001DE189 /* SolverViewController.m */; };
 		F701EEFC1614F463001DE189 /* sudoku-test1.txt in Resources */ = {isa = PBXBuildFile; fileRef = F701EEFB1614F463001DE189 /* sudoku-test1.txt */; };
+		F70220D2161573DA00B5579E /* sudoku-test2.txt in Resources */ = {isa = PBXBuildFile; fileRef = F70220D1161573DA00B5579E /* sudoku-test2.txt */; };
+		F70220E51617A15700B5579E /* BoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F70220E41617A15700B5579E /* BoardCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		F701EEF81614EEF9001DE189 /* SolverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolverViewController.h; sourceTree = "<group>"; };
 		F701EEF91614EEF9001DE189 /* SolverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolverViewController.m; sourceTree = "<group>"; };
 		F701EEFB1614F463001DE189 /* sudoku-test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sudoku-test1.txt"; sourceTree = "<group>"; };
+		F70220D1161573DA00B5579E /* sudoku-test2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "sudoku-test2.txt"; path = "../../../../../../Volumes/Macintosh HD/graham/Dropbox/Documents/School/Junior/1st Semester/CS270/Project 1/sudoku-test2.txt"; sourceTree = "<group>"; };
+		F70220E31617A15700B5579E /* BoardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardCell.h; sourceTree = "<group>"; };
+		F70220E41617A15700B5579E /* BoardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +96,16 @@
 		F701EECE1614A2AE001DE189 /* SudoSolve */ = {
 			isa = PBXGroup;
 			children = (
+				F7FB3ECB161E5319006EF71A /* Model */,
 				F701EED71614A2AE001DE189 /* AppDelegate.h */,
 				F701EED81614A2AE001DE189 /* AppDelegate.m */,
 				F701EEE01614A2AE001DE189 /* MainStoryboard.storyboard */,
 				F701EEFB1614F463001DE189 /* sudoku-test1.txt */,
+				F70220D1161573DA00B5579E /* sudoku-test2.txt */,
 				F701EEF81614EEF9001DE189 /* SolverViewController.h */,
 				F701EEF91614EEF9001DE189 /* SolverViewController.m */,
-				F701EEEB1614A32C001DE189 /* Solver.h */,
-				F701EEEC1614A32C001DE189 /* Solver.m */,
-				F701EEF51614EDB2001DE189 /* SSCell.h */,
-				F701EEF61614EDB2001DE189 /* SSCell.m */,
+				F70220E31617A15700B5579E /* BoardCell.h */,
+				F70220E41617A15700B5579E /* BoardCell.m */,
 				F701EECF1614A2AE001DE189 /* Supporting Files */,
 			);
 			path = SudoSolve;
@@ -118,6 +123,17 @@
 				F701EEDE1614A2AE001DE189 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7FB3ECB161E5319006EF71A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F701EEEB1614A32C001DE189 /* Solver.h */,
+				F701EEEC1614A32C001DE189 /* Solver.m */,
+				F701EEF51614EDB2001DE189 /* SSCell.h */,
+				F701EEF61614EDB2001DE189 /* SSCell.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +193,7 @@
 				F701EEDF1614A2AE001DE189 /* Default-568h@2x.png in Resources */,
 				F701EEE21614A2AE001DE189 /* MainStoryboard.storyboard in Resources */,
 				F701EEFC1614F463001DE189 /* sudoku-test1.txt in Resources */,
+				F70220D2161573DA00B5579E /* sudoku-test2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +209,7 @@
 				F701EEED1614A32C001DE189 /* Solver.m in Sources */,
 				F701EEF71614EDB2001DE189 /* SSCell.m in Sources */,
 				F701EEFA1614EEF9001DE189 /* SolverViewController.m in Sources */,
+				F70220E51617A15700B5579E /* BoardCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Solver.h"
+#import "BoardCell.h"
 
-@interface SolverViewController : UIViewController
+@interface SolverViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSString *currentInputNumber;
+@property (strong, nonatomic) Solver *solver;
+
+- (IBAction)numberTapped:(UIButton *)sender;
+- (IBAction)solveTapped:(UIButton *)sender;
+- (IBAction)clearTapped:(UIButton *)sender;
 
 @end
